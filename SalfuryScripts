@@ -1,0 +1,92 @@
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "KeySystem"
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 400, 0, 200)
+frame.Position = UDim2.new(0.5, -200, 0.5, -100)
+frame.BackgroundColor3 = Color3.new(0, 0, 0)
+frame.BorderColor3 = Color3.new(1, 1, 1)
+frame.BorderSizePixel = 2
+frame.Parent = screenGui
+
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, 0, 0, 40)
+title.Position = UDim2.new(0, 0, 0, 0)
+title.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
+title.TextColor3 = Color3.new(1, 1, 1)
+title.Text = "KEY SYSTEM"
+title.Font = Enum.Font.SourceSansBold
+title.TextSize = 24
+title.Parent = frame
+
+local message = Instance.new("TextLabel")
+message.Size = UDim2.new(1, -20, 0, 60)
+message.Position = UDim2.new(0, 10, 0, 50)
+message.BackgroundColor3 = Color3.new(0, 0, 0)
+message.TextColor3 = Color3.new(1, 1, 1)
+message.Text = "the key is on our discord server\nhttps://discord.gg/Tt35gKp3qR\njoin to get"
+message.TextWrapped = true
+message.Font = Enum.Font.SourceSans
+message.TextSize = 18
+message.Parent = frame
+
+local textBox = Instance.new("TextBox")
+textBox.Size = UDim2.new(0, 250, 0, 35)
+textBox.Position = UDim2.new(0.5, -125, 0, 120)
+textBox.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
+textBox.TextColor3 = Color3.new(1, 1, 1)
+textBox.PlaceholderColor3 = Color3.new(0.5, 0.5, 0.5)
+textBox.PlaceholderText = "Enter Key"
+textBox.Font = Enum.Font.SourceSans
+textBox.TextSize = 18
+textBox.Parent = frame
+
+local submitButton = Instance.new("TextButton")
+submitButton.Size = UDim2.new(0, 100, 0, 35)
+submitButton.Position = UDim2.new(0.5, -50, 0, 160)
+submitButton.BackgroundColor3 = Color3.new(1, 1, 1)
+submitButton.TextColor3 = Color3.new(0, 0, 0)
+submitButton.Text = "Submit"
+submitButton.Font = Enum.Font.SourceSansBold
+submitButton.TextSize = 20
+submitButton.Parent = frame
+
+local getKeyButton = Instance.new("TextButton")
+getKeyButton.Size = UDim2.new(0, 120, 0, 25)
+getKeyButton.Position = UDim2.new(1, -130, 1, -30)
+getKeyButton.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
+getKeyButton.TextColor3 = Color3.new(1, 1, 1)
+getKeyButton.Text = "Get Key"
+getKeyButton.Font = Enum.Font.SourceSans
+getKeyButton.TextSize = 16
+getKeyButton.Parent = frame
+
+getKeyButton.MouseButton1Click:Connect(function()
+    setclipboard("https://discord.gg/Tt35gKp3qR")
+end)
+
+submitButton.MouseButton1Click:Connect(function()
+    if textBox.Text ~= "" then
+        local failFrame = Instance.new("Frame")
+        failFrame.Size = UDim2.new(1, -40, 0, 80)
+        failFrame.Position = UDim2.new(0, 20, 0, 60)
+        failFrame.BackgroundColor3 = Color3.new(0.2, 0, 0)
+        failFrame.BorderColor3 = Color3.new(1, 0, 0)
+        failFrame.BorderSizePixel = 1
+        failFrame.Parent = frame
+        
+        local failLabel = Instance.new("TextLabel")
+        failLabel.Size = UDim2.new(1, 0, 1, 0)
+        failLabel.BackgroundColor3 = Color3.new(0.2, 0, 0)
+        failLabel.TextColor3 = Color3.new(1, 0, 0)
+        failLabel.Text = "INVALID KEY\nJoin Discord for the correct key"
+        failLabel.TextWrapped = true
+        failLabel.Font = Enum.Font.SourceSansBold
+        failLabel.TextSize = 18
+        failLabel.Parent = failFrame
+        
+        wait(3)
+        failFrame:Destroy()
+    end
+end)
